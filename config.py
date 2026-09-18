@@ -29,15 +29,26 @@ OIL_TICKERS = {
 }
 
 # --- Sentiment Models ---
-SENTIMENT_MODELS = ["vader", "textblob", "finbert"]
+SENTIMENT_MODELS = ["vader", "textblob", "finbert", "neural_lstm"]
 FINBERT_MODEL = "ProsusAI/finbert"
 
-# Weights for ensemble score
+# Weights for ensemble score (must sum to 1.0 for active models)
 SENTIMENT_WEIGHTS = {
-    "vader": 0.35,
-    "textblob": 0.15,
-    "finbert": 0.50,
+    "vader":       0.20,
+    "textblob":    0.10,
+    "finbert":     0.40,
+    "neural_lstm": 0.30,
 }
+
+# --- Neural LSTM model ---
+NEURAL_MODEL_DIR  = "output/neural_model"
+NEURAL_EMBED_DIM  = 128
+NEURAL_HIDDEN_DIM = 128
+NEURAL_NUM_LAYERS = 2
+NEURAL_DROPOUT    = 0.35
+NEURAL_EPOCHS     = 15
+NEURAL_BATCH_SIZE = 16
+NEURAL_LR         = 1e-3
 
 # --- Analysis ---
 ROLLING_WINDOW_DAYS = 7
